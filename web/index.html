@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MZ Feedback</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <aside class="command-hint" aria-label="Comando de feedback">
+    <span class="hint-icon" aria-hidden="true">✦</span>
+    <span>
+      <strong>Ajude a melhorar a cidade</strong>
+      <small>Use <kbd id="hint-command">/feedback</kbd> ou <kbd id="hint-key">F10</kbd></small>
+    </span>
+  </aside>
+
+  <main id="overlay" class="overlay" hidden>
+    <section class="shell" role="dialog" aria-modal="true" aria-labelledby="screen-title">
+      <header class="shell-header">
+        <div>
+          <span class="eyebrow">CENTRAL DA COMUNIDADE</span>
+          <h1 id="screen-title">Enviar feedback</h1>
+          <p id="screen-subtitle">Conte o que aconteceu. Imagens ajudam a equipe a entender melhor.</p>
+        </div>
+        <button id="close-button" class="icon-button" type="button" aria-label="Fechar">×</button>
+      </header>
+
+      <section id="submit-screen" class="screen">
+        <form id="feedback-form" novalidate>
+          <label class="field">
+            <span>Categoria</span>
+            <select id="category" name="category" required></select>
+          </label>
+
+          <label class="field">
+            <span class="field-heading">
+              <span>Seu feedback</span>
+              <small id="text-counter">0 / 2000</small>
+            </span>
+            <textarea id="message" name="message" rows="7" placeholder="Explique com detalhes o problema ou a sua ideia..." required></textarea>
+          </label>
+
+          <section class="upload-block" aria-labelledby="upload-title">
+            <div class="field-heading">
+              <div>
+                <strong id="upload-title">Imagens</strong>
+                <small id="upload-help">Opcional · até 3 fotos</small>
+              </div>
+              <div class="upload-actions">
+                <button id="capture-screen" class="secondary-button" type="button">Capturar tela</button>
+                <button id="add-images" class="secondary-button" type="button">Adicionar fotos</button>
+              </div>
+            </div>
+            <input id="image-input" type="file" accept="image/jpeg,image/png,image/webp" multiple hidden>
+            <div id="image-list" class="image-list" aria-live="polite">
+              <div class="empty-images">
+                <span>▧</span>
+                <p>Nenhuma imagem adicionada</p>
+              </div>
+            </div>
+          </section>
+
+          <p id="form-error" class="form-error" role="alert" hidden></p>
+
+          <footer class="form-footer">
+            <p>As imagens são otimizadas antes do envio.</p>
+            <button id="submit-button" class="primary-button" type="submit">
+              <span>Enviar feedback</span>
+            </button>
+          </footer>
+        </form>
+      </section>
+
+      <section id="staff-screen" class="screen staff-screen" hidden>
+        <div class="staff-layout">
+          <aside class="report-list-panel">
+            <div class="list-toolbar">
+              <strong>Feedbacks recentes</strong>
+              <select id="status-filter" aria-label="Filtrar por status">
+                <option value="">Todos</option>
+              </select>
+            </div>
+            <div id="report-list" class="report-list">
+              <p class="loading-state">Carregando feedbacks…</p>
+            </div>
+          </aside>
+          <article id="report-detail" class="report-detail">
+            <div class="empty-detail">
+              <span>✦</span>
+              <h2>Selecione um feedback</h2>
+              <p>Os detalhes e imagens aparecerão aqui.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
